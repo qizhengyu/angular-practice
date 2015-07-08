@@ -34,19 +34,20 @@
 
   <!-- Service -->
   <script src="service/friends.js"></script>
+  <script src="service/bible.js"></script>
 
 
   </head>
-  <body>
-
-    <div clas="container" ng-app="app">
-    	<header ng-include="'templates/nav.html'"></header>
+  <body ng-app="app">
+    <div ng-include="'templates/nav.html'"></div>
+    <div id="wrap" class="container">
+    	
     	<div ui-view></div>
 
-    	<footer ng-include="'templates/footer.html'"></footer>
+    	
 
     </div>
-
+    <footer ng-include="'templates/footer.html'"></footer>
 
 
   </body>
