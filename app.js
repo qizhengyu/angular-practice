@@ -24,6 +24,7 @@ app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'javascripts')));
 app.use('/templates', express.static(path.join(__dirname, 'templates')));
+app.use('/api', express.static(path.join(__dirname, 'api')));
 
 
 app.use('/', routes);

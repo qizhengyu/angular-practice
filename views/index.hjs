@@ -21,13 +21,23 @@
 
 	<script src="vendor/angular-ui-router.js"></script>
 
-	<script src="application.js"></script>
+	
+
+
+  <!-- Controller -->
+  <script src="application.js"></script>
+  <script src="controller/homeController.js"></script>
+  <script src="controller/aboutController.js"></script>
+
+
+
+
+  <!-- Service -->
+  <script src="service/friends.js"></script>
 
 
   </head>
   <body>
-    <h1>{{ title }}</h1>
-
 
     <div clas="container" ng-app="app">
     	<header ng-include="'templates/nav.html'"></header>
