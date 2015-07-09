@@ -8,6 +8,9 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+
 var app = express();
 
 // view engine setup
@@ -29,6 +32,22 @@ app.use('/api', express.static(path.join(__dirname, 'api')));
 
 app.use('/', routes);
 app.use('/users', users);
+
+if(app.get('env') == 'development'){
+  mongoose.connect('mongodb://localhost/test');
+}
+
+var restaurantSchema = new Schema({
+  // address: String,
+  // grades: String
+  name: String
+});
+mongoose.model('restaurants', restaurantSchema);
+// mongoose.model('restaurants').find(function(err, restaurants){
+//   // console.log('restaurans', restaurants);
+// });
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

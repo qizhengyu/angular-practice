@@ -1,6 +1,4 @@
-angular
-	.module('app')
-	.controller('homeController', ['$scope', 'bible', function($scope, bible){
+angular.module('app').controller('homeController', ['$scope', 'bible', function($scope, bible){
 		$scope.title = "Home";
 		$scope.bible = bible;
 	}]);

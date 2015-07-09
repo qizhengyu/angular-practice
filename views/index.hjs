@@ -28,13 +28,14 @@
   <script src="application.js"></script>
   <script src="controller/homeController.js"></script>
   <script src="controller/aboutController.js"></script>
-
+  <script src="controller/restaurantsController.js"></script>
 
 
 
   <!-- Service -->
   <script src="service/friends.js"></script>
   <script src="service/bible.js"></script>
+  <script src="service/restaurants.js"></script>
 
 
   </head>

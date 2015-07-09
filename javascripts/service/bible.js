@@ -1,8 +1,22 @@
-angular
-.module('app')
-.factory('Bible', function(){
+angular.module('app').factory('Bible', ['$http', function($http){
 	return {
+		// ['$http', function($http){
+			// 		return $http.get('/api/friends.json').then(function(response){
+			// 			return response.data;
+			// 		})
+			// 	}]
+
+		// get: function(){
+		// 	return $http.get('/restaurants').then(function(response){
+		// 		console.log('response.data', response.data);
+		// 		return response.data;
+		// 	});
+		// }		
+
+
+
 		get: function(){
+
 			return [
 				{"book": "Genesis", "chapter": 1, "phase": 1,
 				"content": "In the beginning God created the heavens and the earth."},
@@ -27,4 +41,4 @@ angular
 			]
 		}
 	}
-});
+}]);

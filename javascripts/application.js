@@ -12,7 +12,6 @@ angular
 			controller : 'homeController',
 			resolve:{
 				bible: ['Bible', function(Bible){
-					console.log('bible', Bible.get());
 					return Bible.get();
 				}]
 			}
@@ -37,5 +36,15 @@ angular
 		.state('contact',{
 			url: '/contact',
 			templateUrl: 'templates/contact.html'
+		})
+		.state('restaurants',{
+			url: '/restaurants',
+			templateUrl: 'templates/restaurants.html',
+			controller: 'restaurantsController',
+			resolve:{
+				restaurants: ['Restaurants', function(Restaurants){
+					return Restaurants.get();
+				}]
+			}
 		})
 	}])
