@@ -40,12 +40,23 @@ if(app.get('env') == 'development'){
 var restaurantSchema = new Schema({
   // address: String,
   // grades: String
+  // id: String,
+  // address: {
+  //   building: String,
+  //   coord: {
+  //     0: String,
+  //     1: String
+  //   },
+  //   street: String,
+  //   zipcode: String
+  // }
   name: String
 });
 mongoose.model('restaurants', restaurantSchema);
 // mongoose.model('restaurants').find(function(err, restaurants){
 //   // console.log('restaurans', restaurants);
 // });
+
 
 
 

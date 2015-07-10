@@ -1,3 +1,4 @@
+app = {} || app;
 angular.module('app').factory('Bible', ['$http', function($http){
 	return {
 		// ['$http', function($http){
@@ -16,7 +17,42 @@ angular.module('app').factory('Bible', ['$http', function($http){
 
 
 		get: function(){
+			$http.post('/home').then(function(response){
+				// var books = response.data.version;
+				// var versionRef = response.data.version_ref;
+				// console.log('bible Ojb', response.data);
+				// var res = [];
+				// for(var bookId in books){
+				//     if(books.hasOwnProperty(bookId)){
+				//     	var bookName = books[bookId].book_name;
+				//     	var bookNum = books[bookId].book_nr;
+				//     	var book = books[bookId].book;
 
+				//     	for(var chapterId in book){
+				//     		if(book.hasOwnProperty(chapterId)){
+				//     			var chapter = book[chapterId].chapter;
+
+				//     			for(var verseId in chapter){
+				//     				if(chapter.hasOwnProperty(verseId)){
+				// 						res.push({
+				// 							'version': versionRef,
+				// 							'bookName': bookName,
+				//     					  	'book': bookNum,
+				//     					  	'chapter': chapterId,
+				//     					  	'verse' : verseId,
+				//     					  	'verseContent': chapter[verseId].verse})
+				//     				}
+				//     			}
+				    			
+				//     		}
+				//     	}
+				        
+				//     }
+				// }
+				// app.bibleObj = response.data;
+
+				
+			});
 			return [
 				{"book": "Genesis", "chapter": 1, "phase": 1,
 				"content": "In the beginning God created the heavens and the earth."},
