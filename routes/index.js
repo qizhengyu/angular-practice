@@ -30,69 +30,59 @@ router.post('/home', function(req, res, next) {
 	// var Bible = mongoose.model('bible_nasb', {name: String});
 	// var bibleObj = require('/api/bible1.json');
 
-	console.log('bibleObj', bibleObj);
-	var bibleObj = {};
-	fs.readFile('./api/bible1.json', function (err, data) {
-	  if (err) throw err;
-	  bibleObj = JSON.parse(data);
+	var bibleObj = bibleModel.find(function(err, bibles){
+
+		res.send(bibles);
+	}).limit(20);
+	// fs.readFile('./api/bible1.json', function (err, data) {
+	//   if (err) throw err;
+	//   bibleObj = JSON.parse(data);
 	  // bibleObj = data;
 
-				var books = bibleObj.version;
-				var versionRef = bibleObj.version_ref;
-				var results = [];
-				for(var bookId in books){
-				    if(books.hasOwnProperty(bookId)){
-				    	var bookName = books[bookId].book_name;
-				    	var bookNum = books[bookId].book_nr;
-				    	var book = books[bookId].book;
+				// var books = bibleObj.version;
+				// var versionRef = bibleObj.version_ref;
+				// var results = [];
+				// for(var bookId in books){
+				//     if(books.hasOwnProperty(bookId)){
+				//     	var bookName = books[bookId].book_name;
+				//     	var bookNum = books[bookId].book_nr;
+				//     	var book = books[bookId].book;
 
-				    	for(var chapterId in book){
-				    		if(book.hasOwnProperty(chapterId)){
-				    			var chapter = book[chapterId].chapter;
+				//     	for(var chapterId in book){
+				//     		if(book.hasOwnProperty(chapterId)){
+				//     			var chapter = book[chapterId].chapter;
 
-				    			for(var verseId in chapter){
-				    				if(chapter.hasOwnProperty(verseId)){
-										results.push({
-											'version': versionRef,
-											'bookName': bookName,
-				    					  	'book': bookNum,
-				    					  	'chapter': chapterId,
-				    					  	'verse' : verseId,
-				    					  	'verseContent': chapter[verseId].verse})
-				    				}
-				    			}
+				//     			for(var verseId in chapter){
+				//     				if(chapter.hasOwnProperty(verseId)){
+				// 						results.push({
+				// 							'version': versionRef,
+				// 							'bookName': bookName,
+				//     					  	'book': bookNum,
+				//     					  	'chapter': chapterId,
+				//     					  	'verse' : verseId,
+				//     					  	'verseContent': chapter[verseId].verse})
+				//     				}
+				//     			}
 				    			
-				    		}
-				    	}
+				//     		}
+				//     	}
 				        
-				    }
-				}
-		bibleModel.collection.drop();
-		while(results.length > 0){
-			bibleModel.collection.insert(results.splice(0,1000), function(err, docs){
-			if(err){
-				console.log('something is wrong, cannot insert', err);
-			} else{
-				console.log('Inserted! : ', docs.length);
-			}
-		});
-		}
-		
+				//     }
+				// }
+		// bibleModel.collection.drop();
+		// while(results.length > 0){
+		// 	bibleModel.collection.insert(results.splice(0,1000), function(err, docs){
+		// 	if(err){
+		// 		console.log('something is wrong, cannot insert', err);
+		// 	} else{
+		// 		console.log('Inserted! : ', docs.length);
+		// 	}
+		// });
+		// }
 
-	  // results.forEach(function(result){
-	  // 		// var bibleModel = new BibleModel(result);
-	  // 		BibleModel
-	  // 		bibleModel.save(function(error, data){
-	  // 			if(error){
-	  // 				console.log('error saving');
-	  // 			}else{
-	  // 				console.log('hey ! saved !');
-	  // 			}
-	  // 		});
-	  // });
-
-	  res.send(results);
-	});
+	// 	results = bibleModel.find();
+	//   res.send(results);
+	// });
 });
 	
 
