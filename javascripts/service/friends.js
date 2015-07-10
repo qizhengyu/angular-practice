@@ -1,6 +1,4 @@
-angular
-.module('app')
-.factory('Friends', function(){
+angular.module('app').factory('Friends', function(){
 	return {
 		get: function(){
 			return [
