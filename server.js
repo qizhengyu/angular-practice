@@ -5,10 +5,11 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
+var routes = require('./app/routes/index');
+var users = require('./app/routes/users');
 
 var mongoose = require('mongoose');
+var config = require('./config/appconfig.js');
 var Schema = mongoose.Schema;
 
 var app = express();
@@ -25,38 +26,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'javascripts')));
-app.use('/templates', express.static(path.join(__dirname, 'templates')));
-app.use('/api', express.static(path.join(__dirname, 'api')));
+app.use('/app', express.static(path.join(__dirname, 'app')));
 
 
 app.use('/', routes);
 app.use('/users', users);
 
 if(app.get('env') == 'development'){
-  mongoose.connect('mongodb://localhost/test');
+  mongoose.connect(config.dbUrl);
 }
-
-var restaurantSchema = new Schema({
-  // address: String,
-  // grades: String
-  // id: String,
-  // address: {
-  //   building: String,
-  //   coord: {
-  //     0: String,
-  //     1: String
-  //   },
-  //   street: String,
-  //   zipcode: String
-  // }
-  name: String
-});
-mongoose.model('restaurants', restaurantSchema);
-// mongoose.model('restaurants').find(function(err, restaurants){
-//   // console.log('restaurans', restaurants);
-// });
-
 
 
 
@@ -90,6 +68,5 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
 
 module.exports = app;

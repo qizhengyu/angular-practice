@@ -1,55 +1,48 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>{{ title }}</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.js"></script>
-
-    <!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
-	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
-	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<head>
+  <title>{{ title }}</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
 
 
-	<script src="vendor/angular-ui-router.js"></script>
+  <!-- bower components -->
+  <script src="/app/bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="/app/bower_components/angular/angular.min.js"></script>
+  <script src="/app/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
 
-	
+  <link rel="stylesheet" href="/app/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <script src="/app/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+
+
+
 
 
   <!-- Controller -->
-  <script src="application.js"></script>
-  <script src="controller/homeController.js"></script>
-  <script src="controller/aboutController.js"></script>
-  <script src="controller/restaurantsController.js"></script>
+  <script src="javascripts/router.js"></script>
+  <script src="javascripts/controller/homeController.js"></script>
+  <script src="javascripts/controller/aboutController.js"></script>
+  <script src="javascripts/controller/restaurantsController.js"></script>
 
 
-
-  <!-- Service -->
-  <script src="service/friends.js"></script>
-  <script src="service/bible.js"></script>
-  <script src="service/restaurants.js"></script>
-
-
-  </head>
-  <body ng-app="app">
-    <div ng-include="'templates/nav.html'"></div>
-    <div id="wrap" class="container">
-    	
-    	<div ui-view></div>
-
-    	
-
-    </div>
-    <footer ng-include="'templates/footer.html'"></footer>
+  <!-- Model -->
+  <script src="javascripts/model/friends.js"></script>
+  <script src="javascripts/model/bible.js"></script>
+  <script src="javascripts/model/restaurants.js"></script>
 
 
-  </body>
+</head>
+<body ng-app="app">
+  <div ng-include="'templates/nav.html'"></div>
+  <div id="wrap" class="container">
+
+   <div ui-view></div>
+
+ </div>
+ <footer ng-include="'templates/footer.html'"></footer>
+
+
+</body>
 </html>
