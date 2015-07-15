@@ -40,5 +40,4 @@ Thumbs.db
 # https://docs.npmjs.com/misc/faq#should-i-check-my-node-modules-folder-into-git
 node_modules
 flightplan.js
-config/
 app/bower_components/
