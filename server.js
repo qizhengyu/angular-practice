@@ -36,8 +36,6 @@ if(app.get('env') == 'development'){
   mongoose.connect(config.dbUrl);
 }
 
-
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

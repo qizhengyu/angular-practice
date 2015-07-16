@@ -2,32 +2,21 @@ var bibleApp = angular.module('app',[
 	'ui.router'
 	]);
 
-bibleApp.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider){
+bibleApp.config(['$urlRouterProvider', 
+				'$stateProvider', function($urlRouterProvider, $stateProvider){
 	$urlRouterProvider.otherwise('/');
 
 	$stateProvider
 	.state('home',{
-		url: '/',
+		url: '/?book&chapter',
 		templateUrl: 'templates/home.html',
 		controller : 'homeController',
 		resolve:{
-			bible: ['Bible', function(Bible){
-				return Bible.get();
+			bible: ['Bible', '$stateParams', function(Bible, $stateParams){
+				return Bible.get($stateParams);
 			}]
 		}
-			// resolve:{
-			// 	friends: ['Friends', function(Friends){
-			// 		return Friends.get();
-			// 	}]
-			// }
-			// resolve: {
-			// 	friends: ['$http', function($http){
-			// 		return $http.get('/api/friends.json').then(function(response){
-			// 			return response.data;
-			// 		})
-			// 	}]
-			// }
-		})
+	})
 	.state('about',{
 		url: '/about',
 		templateUrl: 'templates/about.html',

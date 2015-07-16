@@ -1,7 +1,8 @@
 angular.module('app').factory('Bible', ['$http', function($http){
 	return {
-		get: function(){
-			return $http.post('/home').then(function(response){
+		get: function(params){
+			var url = '/home?' + generateUrl(params)
+			return $http.post(url).then(function(response){
 				return response.data;
 			});
 		}

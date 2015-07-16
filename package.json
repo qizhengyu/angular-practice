@@ -3,6 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "postinstall": "bower install",
+    "prestart": "npm install",
     "start": "node ./app/bin/www"
   },
   "dependencies": {
@@ -14,7 +16,8 @@
     "less-middleware": "1.0.x",
     "mongoose": "^4.0.6",
     "morgan": "~1.5.3",
-    "serve-favicon": "~2.2.1"
+    "serve-favicon": "~2.2.1",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "flightplan": "^0.6.4"

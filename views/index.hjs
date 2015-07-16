@@ -32,14 +32,17 @@
   <script src="javascripts/model/bible.js"></script>
   <script src="javascripts/model/restaurants.js"></script>
 
+  <!-- Utils -->
+  <script src="javascripts/utils.js"></script>
+
+
 
 </head>
 <body ng-app="app">
   <div ng-include="'templates/nav.html'"></div>
   <div id="wrap" class="container">
 
-   <div ui-view></div>
-
+  <div ui-view></div>
  </div>
  <footer ng-include="'templates/footer.html'"></footer>
 
