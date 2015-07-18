@@ -3,6 +3,9 @@
 <head>
   <title>{{ title }}</title>
   <link rel='stylesheet' href='/stylesheets/style.css' />
+  <!-- <meta name="google-signin-client_id" content="1053287787299-6nfvjpqerbdbd5hnecpje2206rp96bgq.apps.googleusercontent.com"> -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+  <script src="https://apis.google.com/js/api:client.js"></script>
 
 
   <!-- bower components -->
@@ -35,6 +38,10 @@
   <!-- Utils -->
   <script src="javascripts/utils.js"></script>
 
+  <!-- OAuth -->
+  <!-- // <script src="https://apis.google.com/js/platform.js" async defer></script> -->
+  <script src="javascripts/login/google.js"></script>
+
 
 
 </head>
@@ -44,7 +51,11 @@
 
   <div ui-view></div>
  </div>
+
+
+
  <footer ng-include="'templates/footer.html'"></footer>
+
 
 
 </body>

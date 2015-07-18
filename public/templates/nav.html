@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-default">
+<nav id="navbar" class="navbar navbar-default">
 	<div class="container-fluid wrap">
 		<div class="navbar-header">
 	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" aria-expanded="false">
@@ -8,7 +8,7 @@
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>
 	      </button>
-	      <a class="navbar-brand" href="#"><i class="fa fa-coffee"></i>Xiong!</a>
+	      <a class="navbar-brand" href="#/"><i class="fa fa-coffee"></i>Xiong!</a>
 	    </div>
 
 	    <div id="search-bar" class="col-md-6">
@@ -24,17 +24,30 @@
 
 		<ul class="nav nav-pills pull-right">
 			<li ui-sref-active="active">
-				<a href="#/home">Home</a>
-			</li>
-			<li ui-sref-active="active">
 				<a href="#/contact">Contact</a>
 			</li>
 			<li ui-sref-active="active">
 				<a href="#/about">About</a>
 			</li>
 
-			<li class="dropdown">
-	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Grazia <span class="caret"></span></a>
+			<li id="profile" class="dropdown" data-toggle="dropdown">
+<!-- 	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Grazia <span class="caret"></span></a> -->
+
+
+
+<!-- 			<div id="gSignInWrapper">
+			    <span class="label">Sign in with:</span>
+			    <div id="customBtn" class="customGPlusSignIn">
+			      <span class="icon"></span>
+			      <span class="buttonText">Google</span>
+			    </div>
+			  </div>
+			  <div id="name"></div> -->
+
+			  <a href="/auth/google">Login with Google</a>
+
+
+	          <!-- <div id="my-signin2"></div> -->
 	          <ul class="dropdown-menu">
 	            <li><a href="#">Settings</a></li>
 	            <li><a href="#">Logout</a></li>

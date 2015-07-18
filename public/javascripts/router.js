@@ -36,4 +36,8 @@ bibleApp.config(['$urlRouterProvider',
 			}]
 		}
 	})
+	.state('login',{
+		url: '/login',
+		templateUrl: 'templates/login.html'
+	})
 }])
