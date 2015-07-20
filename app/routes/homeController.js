@@ -31,12 +31,7 @@ exports.view = function(req, res, next){
 		bibleObj = bibles;
 		return bibleModel.count({'bookName': bookName, 'verse': '1'});
 	}).then(function(count){
-		bibleCount = count;
-		// var prev = parseInt(bibleObj[0].chapter) < 2 ? 
-		// 	null : '#/?book=' + bookName + '&chapter=' + (parseInt(bibleObj[0].chapter) - 1);
-		// var next = parseInt(bibleObj[0].chapter) > count - 1 ? 
-		// 	null : '#/?book=' + bookName + '&chapter=' + (parseInt(bibleObj[0].chapter) + 1);
-		
+		bibleCount = count;		
 		res.send(
 			{bible: bibleObj,
 				// prev: prev ,

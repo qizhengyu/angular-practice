@@ -9,9 +9,9 @@
 
 
   <!-- bower components -->
-  <script src="/app/bower_components/jquery/dist/jquery.min.js"></script>
-  <script src="/app/bower_components/angular/angular.min.js"></script>
-  <script src="/app/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <script src="/app/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/app/bower_components/angular/angular.js"></script>
+  <script src="/app/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 
   <link rel="stylesheet" href="/app/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <script src="/app/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -28,6 +28,9 @@
   <script src="javascripts/controller/homeController.js"></script>
   <script src="javascripts/controller/aboutController.js"></script>
   <script src="javascripts/controller/restaurantsController.js"></script>
+  <script src="javascripts/controller/adminCtrl.js"></script>
+  <script src="javascripts/controller/loginCtrl.js"></script>
+
 
 
   <!-- Model -->
