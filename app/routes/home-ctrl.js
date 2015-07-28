@@ -13,9 +13,6 @@ var bibleModel = mongoose.model('bible', {
 	'verseContent': String});
 
 exports.view = function(req, res, next){
-	// var Bible = mongoose.model('bible_nasb', {name: String});
-	// var bibleObj = require('/api/bible1.json');
-
 	var bookName = req.query.book || 'Genesis';
 	var chapter = req.query.chapter || "1";
 
@@ -32,10 +29,8 @@ exports.view = function(req, res, next){
 		return bibleModel.count({'bookName': bookName, 'verse': '1'});
 	}).then(function(count){
 		bibleCount = count;		
-		res.send(
-			{bible: bibleObj,
-				// prev: prev ,
-				// next: next,
+		res.send({
+				bible: bibleObj,
 				total: count
 			});
 	});
@@ -93,4 +88,22 @@ exports.view = function(req, res, next){
 	// 	results = bibleModel.find();
 	//   res.send(results);
 	// });
+};
+
+exports.allBookNames = function(req, res, next){
+	var criteria = {
+		"chapter": "1",
+		"verse": "1"
+	};
+
+	bibleModel.find(criteria, 'bookName book', function (err, data) {
+	  if (err){
+	  	throw err;
+	  } 
+	  return res.send(data);
+	});
+
+
+ 
+
 }

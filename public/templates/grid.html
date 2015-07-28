@@ -1,0 +1,16 @@
+<div class="panel panel-default panel-success col-md-offset-1 col-md-6 container">
+	<div class="panel-heading">
+		<div><h3 class="panel-title">{{bible[0].bookName}} - {{bible[0].chapter}}</h3>
+		</div>
+	</div>
+	<div class="panel-body">
+		<table class="table table-content">
+			<tr ng-repeat="b in bible">
+				<td class="tb-cell">
+					<!-- {{b.bookName}} - {{b.chapter}}:{{b.verse}}<br> -->
+					<sup class="text-muted">{{b.verse}}</sup>&nbsp&nbsp{{b.verseContent}}
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>

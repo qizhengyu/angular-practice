@@ -1,9 +1,9 @@
-var app = angular.module('app');
+var webapp = angular.module('app');
 
 /**********************************************************************
  * Admin controller
  **********************************************************************/
-app.controller('AdminCtrl', function($scope, $http) {
+webapp.controller('AdminCtrl', function($scope, $http) {
   // List of users got from the server
   $scope.users = [];
 

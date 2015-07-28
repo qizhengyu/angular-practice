@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var fs = require('fs');
 // var bibleObj = require('./path/api/bible1.json');
 
-var homeController = require('./homeController');
+var homeController = require('./home-ctrl');
 var localLoginController = require('../controller/localLoginController');
 
 // var passport = require('passport');
@@ -33,6 +33,7 @@ router.get('/restaurants', function(req, res, next) {
 
 
 router.post('/home', homeController.view);
+router.get('/books', homeController.allBookNames);
 
 /**
 * Local Login Controller

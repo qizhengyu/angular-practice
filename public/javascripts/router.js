@@ -1,19 +1,21 @@
-var bibleApp = angular.module('app',[
-	'ui.router'
-	]);
+var app = app || {};
 
-bibleApp.config(['$urlRouterProvider', 
-				'$stateProvider',
-				'$httpProvider',
-				'$locationProvider',
-				function($urlRouterProvider, $stateProvider, $httpProvider, $locationProvider){
-	$urlRouterProvider.otherwise('/');
+var webapp = angular.module('app',[
+	'ui.router',
+  'app.directive']);
+
+webapp.config(['$urlRouterProvider', 
+  '$stateProvider',
+  '$httpProvider',
+  '$locationProvider',
+  function($urlRouterProvider, $stateProvider, $httpProvider, $locationProvider){
+    $urlRouterProvider.otherwise('/');
 
 
   	//================================================
     // Check if the user is connected
     //================================================
-	var checkLoggedin = function($q, $timeout, $http, $location, $rootScope, $state){
+    var checkLoggedin = function($q, $timeout, $http, $location, $rootScope, $state){
       // Initialize a new promise
       var deferred = $q.defer();
 
@@ -23,10 +25,10 @@ bibleApp.config(['$urlRouterProvider',
         // Authenticated
         if (user !== '0'){
         	console.log('user Authenticated');
-        	 /*$timeout(deferred.resolve, 0);*/
+          /*$timeout(deferred.resolve, 0);*/
           deferred.resolve();
         }
-         
+
 
         // Not Authenticated
         else {
@@ -56,7 +58,7 @@ bibleApp.config(['$urlRouterProvider',
         responseError: function(response) {
           if (response.status === 401)
             // $location.url('/login');
-        $state.go('login');
+          $state.go('login');
           return $q.reject(response);
         }
       };
@@ -67,56 +69,63 @@ bibleApp.config(['$urlRouterProvider',
 
 
 
-	$stateProvider
-	.state('home',{
-		url: '/?book&chapter',
-		templateUrl: 'templates/home.html',
-		controller : 'homeController',
-		resolve:{
-			bible: ['Bible', '$stateParams', function(Bible, $stateParams){
-				return Bible.get($stateParams);
-			}]
-		}
-	})
-	.state('about',{
-		url: '/about',
-		templateUrl: 'templates/about.html',
-		controller: 'aboutController'
-	})
-	.state('contact',{
-		url: '/contact',
-		templateUrl: 'templates/contact.html'
-	})
-	.state('restaurants',{
-		url: '/restaurants',
-		templateUrl: 'templates/restaurants.html',
-		controller: 'restaurantsController',
-		resolve:{
-			restaurants: ['Restaurants', function(Restaurants){
-				return Restaurants.get();
-			}]
-		}
-	})
-	.state('admin', {
-		url: '/admin',
-        templateUrl: 'templates/admin.html',
-        controller: 'AdminCtrl',
-        resolve: {
-          loggedin: checkLoggedin
-        }
-      })
-	.state('login',{
-		url: '/login',
-		templateUrl: 'templates/login.html',
-		controller: 'loginCtrl'
-	})
-}])
+    $stateProvider
+    .state('home',{
+      url: '/?book&chapter',
+      templateUrl: 'templates/home.html',
+      controller : 'homeController',
+      resolve:{
+        bible: ['Bible', '$stateParams', function(Bible, $stateParams){
+          return Bible.get($stateParams);
+        }]
+      }
+    })
+    .state('about',{
+      url: '/about',
+      templateUrl: 'templates/about.html',
+      controller: 'aboutController'
+    })
+    .state('contact',{
+      url: '/contact',
+      templateUrl: 'templates/contact.html',
+      controller: 'ContactController'
+    })
+    .state('restaurants',{
+      url: '/restaurants',
+      templateUrl: 'templates/restaurants.html',
+      controller: 'restaurantsController',
+      resolve:{
+       restaurants: ['Restaurants', function(Restaurants){
+        return Restaurants.get();
+      }]
+    }
+  })
+    .state('admin', {
+      url: '/admin',
+      templateUrl: 'templates/admin.html',
+      controller: 'AdminCtrl',
+      resolve: {
+        loggedin: checkLoggedin
+      }
+    })
+    .state('login',{
+      url: '/login',
+      templateUrl: 'templates/login.html',
+      controller: 'loginCtrl'
+    })
+  }])
 .run(function($rootScope, $http){
-    $rootScope.message = '';
+  $rootScope.message = '';
 
     // Logout function is available in any pages
     $rootScope.logout = function(){
       $rootScope.message = 'Logged out.';
       $http.post('/logout');
     };
+
+    $http.get('/books')
+      .success(function(data, status, headers, config) {
+        app.books = data;
+      })
+
   });

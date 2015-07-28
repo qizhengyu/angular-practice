@@ -25,11 +25,17 @@
 
   <!-- Controller -->
   <script src="javascripts/router.js"></script>
-  <script src="javascripts/controller/homeController.js"></script>
-  <script src="javascripts/controller/aboutController.js"></script>
-  <script src="javascripts/controller/restaurantsController.js"></script>
-  <script src="javascripts/controller/adminCtrl.js"></script>
-  <script src="javascripts/controller/loginCtrl.js"></script>
+  <script src="javascripts/controller/home-ctrl.js"></script>
+  <script src="javascripts/controller/about-ctrl.js"></script>
+  <script src="javascripts/controller/restaurants-ctrl.js"></script>
+  <script src="javascripts/controller/admin-ctrl.js"></script>
+  <script src="javascripts/controller/login-ctrl.js"></script>
+  <script src="javascripts/controller/contact-ctrl.js"></script>
+
+<!-- Directives -->
+ <script src="javascripts/directives/form-components.js"></script>
+ <script src="javascripts/directives/grid-components.js"></script>
+
 
 
 
