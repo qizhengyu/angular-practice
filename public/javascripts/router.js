@@ -2,6 +2,8 @@ var app = app || {};
 
 var webapp = angular.module('app',[
 	'ui.router',
+  'ngSanitize',
+  'ui.select',
   'app.directive']);
 
 webapp.config(['$urlRouterProvider', 

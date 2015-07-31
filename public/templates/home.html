@@ -7,31 +7,20 @@
 	</div>
 	<div grid-table></div>
 
-	<div class="col-md-5">
-		<select ng-model="selectedBook" ui-select2="" class="form-control">
-	    <option  ng-repeat="book in books" ng-selected="{{currentBook == book.bookName}}" value="{{book.bookName}}">{{book.bookName}}</option>
-	</select>
+	<div class="col-md-4">
+		<ui-select ng-model="books.selected" theme="selectize" on-select="updateSelectedBook(books.selected)" ng-disabled="disabled" style="width: 345px;">
+			<ui-select-match placeholder="Select or search a country in the list...">{{$select.selected.bookName}}</ui-select-match>
+				<ui-select-choices repeat="book in books | filter: $select.search">
+				<span ng-bind-html="book.bookName | highlight: $select.search"></span>
+			</ui-select-choices>
+		</ui-select>
+
+	<div id="chapter-picker" class="col-md-12">
+	<ul>
+		<li ng-repeat="item in chapters() track by $index" ng-click="updateSelectedChapter($index + 1)" class="col-md-2 verse btn btn-default">
+			<a href="">{{$index + 1}}</a>
+		</li>
+	</ul>
+	<div>
 	</div>
-	  
 </div>
-
-
-
-
-
-<!-- <ul>
-	<li ng-class="{'text-muted': !friend.isSpecial}" ng-repeat="friend in friends">
-		<input type="text" ng-model="friend.name"/>
-		<input type="text" ng-model="friend.age"/>
-		<button ng-click="friends.splice($index,1)" class="btn btn-danger">-</button>
-	</li>
-</ul>
-<button ng-click="save()" class="btn btn-primary">Save</button>
-<ul>
-	<li ng-repeat="item in items">{{item}}</li>
-</ul>
-
-<input type="text" ng-model="title">
-<input type="text" ng-model="myValue">
-
-<select ng-model="selectedValue" ng-options="value for value in items"></select> -->

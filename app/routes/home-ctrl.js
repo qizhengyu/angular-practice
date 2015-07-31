@@ -96,12 +96,28 @@ exports.allBookNames = function(req, res, next){
 		"verse": "1"
 	};
 
-	bibleModel.find(criteria, 'bookName book', function (err, data) {
-	  if (err){
-	  	throw err;
-	  } 
-	  return res.send(data);
-	});
+	bibleModel.aggregate([
+		{$match: {verse: '1'}},
+        {$group: {_id: {book: '$book', bookName: '$bookName'}, total: {$sum: 1}}},
+        {$sort: {_id: 1}}
+    ], function (err, data) {
+        if (err) {
+            throw err;
+        }
+        var result = [];
+        data.forEach(function(element, index){
+        	result.push({book: element._id.book, bookName: element._id.bookName, total: element.total});
+        });
+        res.send(result);
+        
+    });
+
+	// bibleModel.find(criteria, 'bookName book', function (err, data) {
+	//   if (err){
+	//   	throw err;
+	//   } 
+	//   return res.send(data);
+	// });
 
 
  
