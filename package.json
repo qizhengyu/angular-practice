@@ -5,6 +5,7 @@
   "scripts": {
     "postinstall": "bower install",
     "prestart": "npm install",
+    "test": "node node_modules/karma/bin/karma start test/karma.conf.js",
     "start": "node ./app/bin/www"
   },
   "dependencies": {
@@ -25,6 +26,11 @@
     "underscore": "^1.8.3"
   },
   "devDependencies": {
-    "flightplan": "^0.6.4"
+    "flightplan": "^0.6.4",
+    "jasmine-core": "^2.3.4",
+    "karma": "^0.13.3",
+    "karma-chrome-launcher": "^0.2.0",
+    "karma-firefox-launcher": "^0.1.6",
+    "karma-jasmine": "^0.3.6"
   }
 }
